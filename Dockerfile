@@ -25,13 +25,18 @@ python-smbus  \
 libi2c-dev \
 module-init-tools \
 unzip \
+nodejs \
+npm \
 && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install picamera python module using pip
 RUN pip install pyconnman
 
+RUN npm install sys watson-developer-cloud
+
 # add the root dir to the /app dir in the container env
 COPY . /app
 
+CMD modprobe snd_bcm2835
 CMD modprobe bcm2835-v4l2
 CMD ["bash", "/app/start.sh"]
