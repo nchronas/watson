@@ -1,11 +1,11 @@
 'use strict';
-sys = require('sys');
 
 var username = process.env.USERNAME;
 var password = process.env.PASSWORD;
-
+var resin_token = process.env.authToken;
 var watson = require('watson-developer-cloud');
 var fs = require('fs');
+
 
 var speech_to_text = watson.speech_to_text({
   username: username,
@@ -15,7 +15,6 @@ var speech_to_text = watson.speech_to_text({
 });
 
 var params = {
-  // From file
   audio: fs.createReadStream('./speech.wav'),
   content_type: 'audio/wav; rate=44100'
 };

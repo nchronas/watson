@@ -8,5 +8,7 @@ echo "root:$PASSWD" | chpasswd
 #Spawn dropbear
 dropbear -E -F-s &
 
+export AUDIODEV=hw:1,0
+
 #start your application from here...
 sleep 9999999999999
