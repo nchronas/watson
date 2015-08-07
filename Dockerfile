@@ -27,12 +27,14 @@ module-init-tools \
 unzip \
 nodejs \
 npm \
+sox \
+libsox-fmt-all \
 && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install picamera python module using pip
 RUN pip install pyconnman
 
-RUN npm install sys watson-developer-cloud
+RUN npm install sys watson-developer-cloud node-record-lpcm16
 
 # add the root dir to the /app dir in the container env
 COPY . /app
